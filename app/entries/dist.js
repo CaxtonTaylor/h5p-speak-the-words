@@ -4,7 +4,7 @@ import { decode } from 'he';
 /**
  * Wrapper function for H5P functionality
  */
-H5P.SpeakTheWords = (function (Question) {
+H5P.SpeakTheWordsIDO = (function (Question) {
   "use strict";
 
   /**

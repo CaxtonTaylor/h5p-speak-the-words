@@ -165,6 +165,33 @@ export default class {
    * Displays unsupported browser section if the browser does not support the Web Speech API.
    */
   registerDomElements() {
+
+    if (this.params.media && this.params.media.library) {
+      var type = this.params.media.library.split(' ')[0];
+      if (type === 'H5P.Image') {
+        if (this.params.media.params.file) {
+          // Register task image
+          this.question.setImage(this.params.media.params.file.path, {
+            disableImageZooming: this.params.behaviour.disableImageZooming,
+            alt: this.params.media.params.alt,
+            title: this.params.media.params.title
+          });
+        }
+      }
+      else if (type === 'H5P.Video') {
+        if (this.params.media.params.sources) {
+          // Register task video
+          this.question.setVideo(this.params.media);
+        }
+      }
+      else if (type === 'H5P.Audio') {
+        if (this.params.media.params) {
+          // Register task audio
+          this.question.setAudio(this.params.media);
+        }
+      }
+    }
+
     if (!window.annyang) {
       const errorElement = document.createElement('div');
 
