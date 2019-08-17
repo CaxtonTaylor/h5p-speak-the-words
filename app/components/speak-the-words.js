@@ -171,8 +171,12 @@ export default class {
       if (type === 'H5P.Image') {
         if (this.params.media.params.file) {
           // Register task image
+          let disableImageZooming 
+          if (this.params.behaviour) {
+            disableImageZooming = this.params.behaviour.disableImageZooming
+          }
           this.question.setImage(this.params.media.params.file.path, {
-            disableImageZooming: this.params.behaviour.disableImageZooming,
+            disableImageZooming: disableImageZooming,
             alt: this.params.media.params.alt,
             title: this.params.media.params.title
           });
